@@ -4,7 +4,8 @@
 </head>
 <script type="text/javascript">
   let year = 2020;
-  let lunar_year;
+  let lunar_year,
+    err = null;
   switch ((year - 3) % 10) {
     case 0:
       lunar_year = "Qúy";
@@ -35,6 +36,9 @@
       break;
     case 9:
       lunar_year = "Nhâm";
+      break;
+    default:
+      err = '<h4 style="color:red">Có gì đó không ổn!</h4>';
       break;
   }
   lunar_year += " ";
@@ -77,5 +81,9 @@
       break;
   }
 
-  document.write('Năm '+year+' <=> '+lunar_year);
+  if (!err) {
+    document.write("Năm " + year + " <=> " + lunar_year);
+  } else {
+    document.write("<br>" + err);
+  }
 </script>
