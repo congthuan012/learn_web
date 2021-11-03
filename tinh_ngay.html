@@ -1,0 +1,35 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Ngày trong năm</title>
+</head>
+<script type="text/javascript">
+    let month = 2;
+    let year = 2020;
+    let day;
+    document.write('Tháng '+month+' ');
+    document.write('Năm '+year+' ');
+    switch(month){
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            day = 31;
+            break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            day = 30;
+            break;
+        case 2:
+            day = 28;
+            if((year % 4 == 0 && year % 100 != 0) || year % 400 == 0){
+                day = 29;
+            }
+            break;
+    }
+    document.write('có '+day+' ngày!');
+</script>

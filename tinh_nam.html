@@ -1,0 +1,81 @@
+<head>
+  <meta charset="UTF-8" />
+  <title>Ngày trong năm</title>
+</head>
+<script type="text/javascript">
+  let year = 2020;
+  let lunar_year;
+  switch ((year - 3) % 10) {
+    case 0:
+      lunar_year = "Qúy";
+      break;
+    case 1:
+      lunar_year = "Giáp";
+      break;
+    case 2:
+      lunar_year = "Ất";
+      break;
+    case 3:
+      lunar_year = "Bính";
+      break;
+    case 4:
+      lunar_year = "Đinh";
+      break;
+    case 5:
+      lunar_year = "Mậu";
+      break;
+    case 6:
+      lunar_year = "Kỷ";
+      break;
+    case 7:
+      lunar_year = "Canh";
+      break;
+    case 8:
+      lunar_year = "Tân";
+      break;
+    case 9:
+      lunar_year = "Nhâm";
+      break;
+  }
+  lunar_year += " ";
+  switch ((year - 3) % 12) {
+    case 0:
+      lunar_year += "Hợi";
+      break;
+    case 1:
+      lunar_year += "Tý";
+      break;
+    case 2:
+      lunar_year += "Sửu";
+      break;
+    case 3:
+      lunar_year += "Dần";
+      break;
+    case 4:
+      lunar_year += "Mão";
+      break;
+    case 5:
+      lunar_year += "Thìn";
+      break;
+    case 6:
+      lunar_year += "Tỵ";
+      break;
+    case 7:
+      lunar_year += "Ngọ";
+      break;
+    case 8:
+      lunar_year += "Mùi";
+      break;
+    case 9:
+      lunar_year += "Thân";
+      break;
+    case 10:
+      lunar_year += "Dậu";
+      break;
+    case 11:
+      lunar_year += "Tuất";
+      break;
+  }
+
+  document.write('Năm '+year+' <=> '+lunar_year);
+</script>

@@ -1,0 +1,17 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Ngày trong năm</title>
+</head>
+<script type="text/javascript">
+    let salary = 15;
+    let tax = salary*0.1;
+    if(salary >= 15){
+        tax = salary*0.3;
+    }else if(salary >= 7){
+        tax = salary*0.2;
+    }
+
+    document.writeln('Lương nhân viên: '+salary);
+    document.writeln('Thuế thu nhập: '+tax);
+    document.writeln('Thực lãnh: '+(salary - tax));
+</script>
