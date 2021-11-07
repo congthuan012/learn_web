@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Buổi 2</title>
+    <style>
+        .block{
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            border-radius: 20px;
+        }
+        .block>input{
+            border-radius: 20px;
+            border: 1px solid gray;
+            height: 20px;
+            padding: 0px 10px;
+        }
+        .block>input::-webkit-outer-spin-button,
+        .block>input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        #block-output{
+            border: 1px solid #2491c5;
+            padding: 20px;
+            display: none;
+            background: #563a7a38;
+            color: #080808;
+        }
+        #block-output>p{
+            margin: 5px;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bài tập JavaScript Buổi 2</h1>
+    <div class="block">
+        <label for="input-number">Nhập số bất kì( bé hơn 300 và lớn hơn -300):</label>
+        <input id="input-number" type="number">
+    </div>
+    <div id="block-output" class="block">
+    </div>
+    <script>
+        var input = document.getElementById("input-number");
+        input.addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementById("block-output").style.display = "block";
+                document.getElementById("block-output").innerHTML = html(this.value);
+            }
+        });
+
+        function html(number){
+            if(!((number >0 && number < 200) || (number > -200 && number < 0)))
+            {
+                return html = "<p>Huynh đài nhập số lớn quá, nhập nhỏ thôi ạ, máy chạy không nổi!</p>";
+            }
+            var html = `<p>Số vừa nhập: `+number+`</p>`;
+            if(number === 0)
+            {
+                return html += "<p>Số 0 không là số chẵn, không phải số lẻ, không phải số thập phân, không phải số nguyên tố!</p>";
+            }
+            if(number % 1 !== 0)
+            {
+                html += "<p>Số "+number+" là số thập phân!</p>";
+            }else{
+                html += "<p>Số "+number+" là số nguyên!</p>";
+            }
+            if(number % 2 == 0)
+            {
+                html += "<p>Số "+number+" là số chẵn!</p>";
+            }else{
+                html += "<p>Số "+number+" là số lẻ!</p>"
+            }
+            
+            if(number>1 || number<-1)
+            {
+                html+=ktSoNguyenTo(number);
+            }
+
+            html+=daySo(number);
+
+            return html;
+        }
+
+        function ktSoNguyenTo(number){
+            var dem = 0;
+            if(number>1)
+            {
+                for(i = 2;i<=(number/2);i++)
+                {
+                    if(dem > 0){
+                        return "<p>Số "+number+" không phải là số nguyên tố!</p>"
+                    }
+
+                    if(number % i == 0)
+                    {
+                        dem++;
+                    }
+                }
+
+                return "<p>Số "+number+"  là số nguyên tố!</p>";
+            }
+
+            if(number<-1)
+            {
+                for(i = -2;i>=(number/2);i--)
+                {
+                    if(dem > 0){
+                        return "<p>Số "+number+" không phải là số nguyên tố!</p>"
+                    }
+
+                    if(number % i == 0)
+                    {
+                        dem++;
+                    }
+                }
+
+                return "<p>Số "+number+"  là số nguyên tố!</p>";
+            }
+        }
+
+        function daySo(number){
+            var daySo = '<p>Dãy số có được: ';
+            if(number<0)
+            {
+                var dem = number;
+                do{
+                    daySo+=dem+',';
+                    dem++;
+                }while(dem<=-1)
+            }
+            if(number>0)
+            {
+                var dem = 1;
+                do{
+                    daySo+=dem+',';
+                    dem++;
+                }while(dem<=number)
+            }
+            daySo+='</p>';
+
+            return daySo;
+        }
+    </script>
+</body>
+</html>
