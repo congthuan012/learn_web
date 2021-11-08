@@ -138,7 +138,11 @@
             {
                 var dem = 1;
                 do{
-                    daySo+=dem+',';
+                    daySo+=dem;
+                    if(dem!=number)
+                    {
+                        daySo+=',';
+                    }
                     dem++;
                 }while(dem<=number)
             }
