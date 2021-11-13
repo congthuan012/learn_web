@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Buổi 3</title>
+    <style>
+      .block {
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+        border-radius: 20px;
+      }
+      .block > input {
+        border-radius: 5px;
+        border: 1px solid gray;
+        height: 20px;
+        padding: 0px 10px;
+      }
+      .block > input::-webkit-outer-spin-button,
+      .block > input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      #block-output {
+        border: 1px solid #2491c5;
+        padding: 20px;
+        background: #efe5fc38;
+        color: #080808;
+        width: 500px;
+      }
+      .row {
+        margin: 5px;
+        word-break: break-all;
+        display: flex;
+      }
+      .col-label {
+        width: 30%;
+      }
+      .col-input {
+        width: 70%;
+      }
+      .col-input > input {
+        width: 100%;
+        height: 20px;
+        border-radius: 6px;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Bài tập JavaScript Buổi 3</h1>
+    <div class="block">
+      <label for="input-number">Nhập số bất kì:</label>
+      <input id="input-number" type="number" />
+      <button
+        id="push-to-array"
+        style="border-radius: 5px; border: 1px solid black; height: 20px"
+      >
+        Thêm vào mảng
+      </button>
+    </div>
+    <div id="error" style="display: none">
+      <label style="color: red"
+        >Huynh đài nhập số lớn quá, nhập nhỏ thôi ạ, máy chạy không nổi!</label
+      >
+    </div>
+    <div id="block-output" class="block">
+      <div class="row">
+        <div class="col-label">
+          <label for="">Mảng là: </label>
+        </div>
+        <div class="col-input">
+          <input id="array" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-label">
+          <label for="">Số chẵn: </label>
+        </div>
+        <div class="col-input">
+          <input id="even" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-label">
+          <label for="">Số lẻ: </label>
+        </div>
+        <div class="col-input">
+          <input id="odd" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-label">
+          <label for="">Số nguyên tố: </label>
+        </div>
+        <div class="col-input">
+          <input id="prime" />
+        </div>
+      </div>
+    </div>
+    <script src="../script.js"></script>
+    <script>
+      let arr = [];
+      let arrTemp = [];
+      let arrEven = [];
+      let arrOdd = [];
+      let arrPrime = [];
+      document
+        .getElementById("push-to-array")
+        .addEventListener("click", function () {
+          input = document.getElementById("input-number").value;
+          if (input) {
+            if (
+              !((input > 0 && input < 10000000) || (input > -10000000 && input < 0))
+            ) {
+              document.getElementById("error").style.display = "block";
+            } else {
+              document.getElementById("error").style.display = "none";
+              arr.push(input);
+              arrTemp.push(input);
+
+              arrTemp.forEach((value,key) => {
+                if (isPrime(value) == 1) {
+                  arrPrime.push(value);
+                  delete arrTemp[key];
+                }
+                if (isEven(value) == 1) {
+                  arrEven.push(value);
+                  delete arrTemp[key];
+                } else if (isEven(value) == 0) {
+                  arrOdd.push(value);
+                  delete arrTemp[key];
+                }
+              });
+
+              document.getElementById("array").value = arr;
+              document.getElementById("even").value = arrEven;
+              document.getElementById("odd").value = arrOdd;
+              document.getElementById("prime").value = arrPrime;
+            }
+          }
+          document.getElementById("input-number").value = "";
+        });
+    </script>
+  </body>
+</html>
