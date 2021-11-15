@@ -36,10 +36,10 @@
         display: flex;
       }
       .col-label {
-        width: 30%;
+        width: 35%;
       }
       .col-input {
-        width: 70%;
+        width: 65%;
       }
       .col-input > input {
         width: 100%;
@@ -50,15 +50,15 @@
     </style>
   </head>
   <body>
-    <h1>Bài tập JavaScript Buổi 3</h1>
+    <h1>Bài tập JavaScript Buổi 3 - Câu 2</h1>
     <div class="block">
-      <label for="input-number">Nhập số bất kì:</label>
+      <label for="input-number">Nhập số phần tử mảng:</label>
       <input id="input-number" type="number" />
       <button
         id="push-to-array"
         style="border-radius: 5px; border: 1px solid black; height: 20px"
       >
-        Thêm vào mảng
+        Tạo mảng
       </button>
     </div>
     <div id="error" style="display: none">
@@ -77,76 +77,68 @@
       </div>
       <div class="row">
         <div class="col-label">
-          <label for="">Số chẵn: </label>
+          <label for="">GTNN (min) trong mảng</label>
         </div>
         <div class="col-input">
-          <input id="even" />
+          <input id="min-arr" />
         </div>
       </div>
       <div class="row">
         <div class="col-label">
-          <label for="">Số lẻ: </label>
+          <label for="">GTLN (max) trong mảng</label>
         </div>
         <div class="col-input">
-          <input id="odd" />
+          <input id="max-arr" />
         </div>
       </div>
       <div class="row">
         <div class="col-label">
-          <label for="">Số nguyên tố: </label>
+          <label for="">Tổng Mảng: </label>
         </div>
         <div class="col-input">
-          <input id="prime" />
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-label">
-          <label for="">Mã màu tương ứng: </label>
-        </div>
-        <div class="col-input">
-          <input id="color-code" />
+          <input id="total" />
         </div>
       </div>
     </div>
     <script src="../script.js"></script>
     <script>
-      let arr = [];
-      let arrTemp = [];
-      let arrEven = [];
-      let arrOdd = [];
-      let arrPrime = [];
       document
-        .getElementById("push-to-array")
-        .addEventListener("click", function () {
-          input = document.getElementById("input-number").value;
-          if (input) {
+      .getElementById("push-to-array")
+      .addEventListener("click", function () {
+        input = document.getElementById("input-number").value;
+        if (input) {
+            let arr = [];
+            let total = 0;
+            let max = null,min = null;
             if (
-              !((input > 0 && input < 10000000) || (input > -10000000 && input < 0))
+              !((input > 0 && input < 100) || (input > -100 && input < 0))
             ) {
               document.getElementById("error").style.display = "block";
             } else {
               document.getElementById("error").style.display = "none";
-              arr.push(input);
-              arrTemp.push(input);
-              arrTemp.forEach((value,key) => {
-                if (isPrime(value) == 1) {
-                  arrPrime.push(value);
-                  delete arrTemp[key];
+              for(let i = 0; i< input; i++)
+              {
+                let number = Math.floor(Math.random() * 21);
+                if(max == null)
+                {
+                  max = number;
+                }else{
+                  max = max<number?number:max;
                 }
-                if (isEven(value) == 1) {
-                  arrEven.push(value);
-                  delete arrTemp[key];
-                } else if (isEven(value) == 0) {
-                  arrOdd.push(value);
-                  delete arrTemp[key];
-                }
-              });
 
+                if(min == null)
+                {
+                  min = number;
+                }else{
+                  min = min>number?number:min;
+                }
+                arr.push(number);
+                total += number;
+              }
               document.getElementById("array").value = arr;
-              document.getElementById("even").value = arrEven;
-              document.getElementById("odd").value = arrOdd;
-              document.getElementById("prime").value = arrPrime;
+              document.getElementById("min-arr").value = min;
+              document.getElementById("max-arr").value = max;
+              document.getElementById("total").value = total;
             }
           }
           document.getElementById("input-number").value = "";
