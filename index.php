@@ -1,2 +1,2 @@
 <?php
-header('Location:learn_php/buoi_2/form.php');
+header('Location:buoi_2/form.php');
