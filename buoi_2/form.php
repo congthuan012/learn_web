@@ -14,12 +14,12 @@
     <center>
         <form action="process-form.php" method="POST">
             <h1>FORM NHẬP THÔNG TIN</h1>
-            <div>
+            <div class="row">
                 <label class="col-2" for="inputName">Tên</label>
                 <input class="col-8 form-control" id="inputName" name="name" type="text" placeholder="Nhập tên!">
             </div>
 
-            <div>
+            <div class="row">
                 <label class="col-2" for="">Giới tính</label>
                 <div class="col-8">
                     <input name="sex" class="form-control" checked type="radio" value="1">Nam
@@ -27,32 +27,32 @@
                 </div>
             </div>
 
-            <div>
+            <div class="row">
                 <label class="col-2" for="inputEmail">email</label>
                 <input type="email" class="col-8 form-control" id="inputEmail" name="email" type="text" placeholder="Nhập email!">
             </div>
 
-            <div>
+            <div class="row">
                 <label class="col-2" for="inputPassword">Mật khẩu</label>
                 <input class="col-8  form-control" id="inputPassword" name="password" type="password" placeholder="Nhập Mật Khẩu!">
             </div>
 
-            <div>
+            <div class="row">
                 <label class="col-2" for="inputDate">Ngày sinh</label>
                 <input name="date" id="inputDate" class="col-8 form-control" type="date">
             </div>
 
-            <div>
+            <div class="row">
                 <label class="col-2" for="inputAddress">Địa chỉ</label>
                 <input class="col-8 form-control" id="inputAddress" name="address" type="text" placeholder="Nhập địa chỉ!">
             </div>
 
-            <div>
+            <div class="row">
                 <label class="col-2" for="inputHobby">Sở thích</label>
                 <input class="col-8 form-control" id="inputHobby" name="hobby" type="text" placeholder="Nhập sở thích!">
             </div>
 
-            <div>
+            <div class="row">
                 <label class="col-2" for=""></label>
                 <button type="reset" class="col-4 form-control btn btn-reset">Đặt lại</button>
                 <button type="submit" class="col-4 form-control btn btn-submit">Gửi</button>
